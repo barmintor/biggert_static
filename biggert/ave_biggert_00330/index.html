@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>The Biggert Collection of Architectural Vignettes</title>
+  <meta name="description" content="">
+
+  <link rel="canonical" href="/biggert_static/biggert/ave_biggert_00330/">
+  <link rel="stylesheet" id="main-css" type="text/css" href="/biggert_static/assets/main.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- jquery -->
+  <script type='text/javascript' id="jquery"src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type='text/javascript' id="jquery-migrate" src="//code.jquery.com/jquery-migrate-3.0.0.min.js"></script>
+
+  <!--ldpd toolkit -->
+  <script type="text/javascript">CULh_colorfg = '#303030';CULh_colorbg = '#606060';</script>
+  <script type='text/javascript' id="ldpd-toolkit" src="//cdn.cul.columbia.edu/ldpd-toolkit/widgets/cultnbw.min.js"></script>
+</head>
+
+
+  <body>
+
+    <header class="site-header" role="banner">
+  <div class="wrapper">
+    <b><a class="site-title" href="/biggert_static/">
+      <img src="/biggert_static/assets/columbia-logo.png" alt="Columbia Logo"/></a>
+      <span>&#09;</span><a class="site-title" href="/biggert_static/">The Biggert Collection of Architectural Vignettes</a></b><br><br>
+    <nav class="site-nav" style="float:left;text-align:left;">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+            <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+            <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+          </svg>
+        </span>
+      </label>
+      <div class="trigger" style="float:left;text-align:left;">
+        <nav id="primary_nav_wrap" class="site-nav" style="float:left;text-align:left;">
+          <ul>
+            <li><a href="/biggert_static/">Home</a>
+              
+            </li>
+          
+            <li><a href="/biggert_static/about-the-collection/">About</a>
+              <ul>
+                <li>
+                  <a href="/biggert_static/about-the-collection/">About the Collection</a>
+                  
+                </li><li>
+                  <a href="/biggert_static/rights/">Rights & Permissions</a>
+                  
+                </li>
+              </ul>
+            </li>
+          
+            <li><a href="/biggert_static/gallery/">Browse the Collection</a>
+              <ul>
+                <li>
+                  <a href="/biggert_static/companies/">By Company Name</a>
+                  
+                </li><li>
+                  <a href="/biggert_static/locations/">By Company Location</a>
+                  
+                </li><li>
+                  <a href="/biggert_static/gallery/">Image Gallery</a>
+                  
+                </li>
+              </ul>
+            </li>
+          
+            <li><a href="/biggert_static/mirador/">Mirador Viewer</a>
+              
+            </li>
+          
+            <li><a href="/biggert_static/search/">Search</a>
+              
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        
+
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/leaflet-iiif@1.2.2/leaflet-iiif.min.js"></script>
+<div id="iiif-viewer" style="height:600px;"></div>
+<script>
+  var iiif_viewer;
+  var iiifLayers = {};
+  var manifestUrl = 'https://derivativo-2.library.columbia.edu/iiif/2/presentation/10.7916/D81C37TX/manifest.json';
+  iiif_viewer = L.map('iiif-viewer', {
+    center: [0, 0],
+    crs: L.CRS.Simple,
+    zoom: 1,
+    zoomSnap: .5,
+    minZoom: 0,
+    maxZoom: 6
+  });
+  $.getJSON(manifestUrl, function(data) {;
+    var i = 1;
+    $.each(data.sequences[0].canvases, function(_, val) {
+      var label = 'image ' + i;
+      iiifLayers[label] = L.tileLayer.iiif(val.images[0].resource.service['@id'] + '/info.json', {fitBounds: true});
+      i++;
+    });
+    if (i > 2){ L.control.layers(iiifLayers).addTo(iiif_viewer);}
+    iiifLayers[Object.keys(iiifLayers)[0]].addTo(iiif_viewer);
+  });
+</script>
+
+
+
+<table class="prevnext" width="100%" border=0>
+  <tr>
+    <td style="text-align:left;"><b><a href="/biggert_static/biggert/ave_biggert_00329/" class="prev">Previous</a></b></td>
+    <td style="text-align:right;"><b><a href="/biggert_static/biggert/ave_biggert_00331/" class="next">Next</a></b></td>
+  </tr>
+</table>
+
+
+<table class='meta-table'>
+  
+  <tr class='meta-row'>
+    <td class='meta-label'>Title</td>
+    <td class='meta-field'>Bigelow & Dowse Co.. Bill</td>
+  </tr>
+  
+  <tr class='meta-row'>
+    <td class='meta-label'>Genre</td>
+    <td class='meta-field'>Invoices</td>
+  </tr>
+  
+  <tr class='meta-row'>
+    <td class='meta-label'>Call Number</td>
+    <td class='meta-field'>ave_biggert_00330</td>
+  </tr>
+  
+  <tr class='meta-row'>
+    <td class='meta-label'>Date</td>
+    <td class='meta-field'>1880-1889</td>
+  </tr>
+  
+  <tr class='meta-row'>
+    <td class='meta-label'>DOI</td>
+    <td class='meta-field'>10.7916/D81C37TX</td>
+  </tr>
+  
+  <tr class='meta-row'>
+    <td class='meta-label'>Companies</td>
+    <td class='meta-field'>Bigelow & Dowse Co.</td>
+  </tr>
+  
+  <tr class='meta-row'>
+    <td class='meta-label'>IIIF Manifest</td>
+    <td class='meta-field'><a href="https://derivativo-2.library.columbia.edu/iiif/2/presentation/10.7916/D81C37TX/manifest.json"><img src="/biggert_static/assets/iiif-logo.png" alt="iiif-logo" id="iiif-drag" width="25"/></a></td>
+  </tr>
+  <tr class='meta-row'>
+    <td class='meta-label'>Locations</td>
+    <td class='meta-field'>
+      
+      
+        <a data-coordinate="42.35805555555556,-71.06361111111111" style="cursor:pointer;" class="map-link">Boston, Massachusetts, United States<sup><i class="material-icons" style="font-size:10px;">add_location</i></sup></a>
+        
+      
+    </td>
+  </tr>
+</table>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.css"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.Default.css"/>
+<script src="https://unpkg.com/leaflet.markercluster@1.3.0/dist/leaflet.markercluster.js"></script>
+<div id="map-viewer" style="height:450px;border:1px solid grey;"></div>
+<script>
+  $.getJSON("/biggert_static/js/map-markers.json", function(markers_json) {
+    // map and tile layer
+    window.map_viewer;
+    map_viewer = L.map('map-viewer', {
+      center: [42.35805555555556,-71.06361111111111],
+      zoom: 10
+    });
+    L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain-background/{z}/{x}/{y}.{ext}', {
+    	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    	subdomains: 'abcd',
+    	minZoom: 0,
+    	maxZoom: 18,
+    	ext: 'png'
+    }).addTo(map_viewer);
+    L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-labels/{z}/{x}/{y}.{ext}', {
+      attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      subdomains: 'abcd',
+      minZoom: 0,
+      maxZoom: 20,
+      ext: 'png'
+    }).addTo(map_viewer);
+
+    // markers
+    var markers = L.markerClusterGroup({spiderfyOnMaxZoom: true});
+    for (i in markers_json){
+      item = markers_json[i];
+      var title = item['title'];
+      var link = item['link'];
+      var thumb = item['thumbnail'];
+      var coordinates = item['coordinates'];
+      for (c in coordinates){
+        coordinate = coordinates[c].split(",");
+        var marker = L.marker(coordinate);
+        marker.bindPopup(
+          '<a href="' + link + '">' + title + '<br><br><img src="' + thumb +'"/></a>'
+        );
+        markers.addLayer(marker);
+      }
+    }
+    map_viewer.addLayer(markers);
+  });
+  $('.map-link').click(function(){
+    var coordinate = $(this).attr('data-coordinate').split(",");
+    console.log(coordinate);
+    map_viewer.setView(coordinate, 12);
+  });
+</script>
+
+
+      </div>
+    </main>
+
+    <footer class="footer" role="contentinfo" style="height:100px">
+<!-- Presented by the Avery Architectural & Fine Arts Library -->
+</footer>
+
+
+  </body>
+
+</html>
